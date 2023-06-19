@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      * {
+        margin: 10px;
+        padding: 0;
+      }
+    </style>
+    <!-- box -->
+    <style>
+      .box {
+        width: 50px;
+        height: 50px;
+        background: pink;
+        transition: all 1s ease;
+        color: white;
+      }
+      .box::after {
+        content: '❤';
+        width: inherit;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box:hover {
+        width: 100px;
+        height: 100px;
+        background: green;
+        border-radius: 50%;
+      }
+      .box:hover::after {
+        content: '⭐';
+      }
+    </style>
+    <!-- box-2 -->
+    <style>
+      .inner-1 {
+        height: 0;
+        transition: all 1s ease;
+      }
+      .inner-2 {
+        height: 56px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateY(-56px);
+        background: linear-gradient(
+          132deg,
+          #ffceee 0%,
+          #ffe8c9 51%,
+          #f9ffac 80%,
+          #baffd5 100%
+        );
+        transition: all 1s ease;
+      }
+      .inner-1.extend {
+        height: 56px;
+      }
+      .inner-2.extend {
+        transform: translateY(0);
+      }
+    </style>
+    <!-- box-3 -->
+    <style>
+      @keyframes test {
+        50% {
+          width: 100px;
+          height: 100px;
+          background: green;
+          border-radius: 50%;
+          color: black;
+        }
+      }
+      .box-3 {
+        width: 50px;
+        height: 50px;
+        background: pink;
+        color: white;
+        animation-name: test;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+      .box-3::after {
+        content: '❤';
+        width: inherit;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <!-- box-4 -->
+    <style>
+      @keyframes box4 {
+        75% {
+          transform: translateY(500px);
+        }
+        to {
+          transform: translateY(500px);
+        }
+      }
+      .box-4 {
+      }
+      .box-4 .list {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+      }
+      .box-4 .list > li {
+        width: 120px;
+      }
+      .box-4 .list > li > .animation {
+        animation: box4 4s ease;
+        animation-iteration-count: infinite;
+        animation-delay: 2s;
+      }
+      .box-4 .list > li:nth-of-type(1) > .animation {
+        animation-timing-function: linear;
+      }
+      .box-4 .list > li:nth-of-type(2) > .animation {
+        animation-timing-function: ease;
+      }
+      .box-4 .list > li:nth-of-type(3) > .animation {
+        animation-timing-function: ease-in;
+      }
+      .box-4 .list > li:nth-of-type(4) > .animation {
+        animation-timing-function: ease-out;
+      }
+      .box-4 .list > li:nth-of-type(5) > .animation {
+        animation-timing-function: ease-in-out;
+      }
+      .box-4 .list > li:nth-of-type(6) > .animation {
+        animation-timing-function: cubic-bezier(0.04, 1.29, 0.63, 1.51);
+      }
+    </style>
+    <!-- box-5 -->
+    <style>
+      @keyframes box5 {
+        to {
+          transform: translateX(500px);
+        }
+      }
+      .box-5 {
+      }
+      .box-5 .list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+      }
+      .box-5 .list > li {
+        width: 120px;
+      }
+      .box-5 .list > li > .animation {
+        animation: box5 2s ease;
+        animation-iteration-count: infinite;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+      }
+      .box-5 .list > li:nth-of-type(1) > .animation {
+        animation-direction: normal;
+      }
+      .box-5 .list > li:nth-of-type(2) > .animation {
+        animation-direction: reverse;
+      }
+      .box-5 .list > li:nth-of-type(3) > .animation {
+        animation-direction: alternate;
+      }
+      .box-5 .list > li:nth-of-type(4) > .animation {
+        animation-direction: alternate-reverse;
+      }
+    </style>
+    <script>
+      // for box-2
+      window.onload = () => {
+        setTimeout(() => {
+          let innerClass1 = document
+            .querySelector('.inner-1')
+            .getAttribute('class');
+          let innerClass2 = document
+            .querySelector('.inner-2')
+            .getAttribute('class');
+          innerClass1 += ' extend';
+          innerClass2 += ' extend';
+          document.querySelector('.inner-1').setAttribute('class', innerClass1);
+          document.querySelector('.inner-2').setAttribute('class', innerClass2);
+        }, 2000);
+      };
+      // for box-5
+      function operation(mode) {
+        const nodeList = document.querySelectorAll(
+          '.box-5 .list li .animation'
+        );
+        nodeList.forEach((node) => {
+          node.style.animationPlayState = mode;
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" style="display: none"></div>
+      <div class="box-2" style="display: none">
+        <div class="inner-1"></div>
+        <div class="inner-2"></div>
+      </div>
+      <div class="box-3" style="display: none"></div>
+      <div class="box-4" style="display: none">
+        <ul class="list">
+          <li>
+            <span>linear</span>
+            <div class="animation">👇</div>
+          </li>
+          <li>
+            <span>ease</span>
+            <div class="animation">👇</div>
+          </li>
+          <li>
+            <span>ease-in</span>
+            <div class="animation">👇</div>
+          </li>
+          <li>
+            <span>ease-out</span>
+            <div class="animation">👇</div>
+          </li>
+          <li>
+            <span>ease-in-out</span>
+            <div class="animation">👇</div>
+          </li>
+          <li>
+            <span>cubic-bezier</span>
+            <div class="animation">👇</div>
+          </li>
+        </ul>
+      </div>
+      <div class="box-5">
+        <ul class="list">
+          <li>
+            <span>normal</span>
+            <div class="animation">❤</div>
+          </li>
+          <li>
+            <span>reverse</span>
+            <div class="animation">❤</div>
+          </li>
+          <li>
+            <span>alternate</span>
+            <div class="animation">❤</div>
+          </li>
+          <li>
+            <span>alternate-reverse</span>
+            <div class="animation">❤</div>
+          </li>
+        </ul>
+        <button onclick="operation('running')">动起来</button>
+        <button onclick="operation('paused')">停一下</button>
+      </div>
+    </div>
+  </body>
+</html>
