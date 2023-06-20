@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <style>
-      * {
+      /* * {
         margin: 10px;
         padding: 0;
-      }
+      } */
     </style>
     <!-- box -->
     <style>
@@ -40,8 +40,9 @@
     <!-- box-2 -->
     <style>
       .inner-1 {
-        height: 0;
+        height: 8px;
         transition: all 1s ease;
+        border-radius: 0 0 8px 8px;
       }
       .inner-2 {
         height: 56px;
@@ -49,7 +50,8 @@
         top: 0;
         left: 0;
         width: 100%;
-        transform: translateY(-56px);
+        transform: translateY(-48px);
+        border-radius: 0 0 8px 8px;
         background: linear-gradient(
           132deg,
           #ffceee 0%,
@@ -175,37 +177,12 @@
         animation-direction: alternate-reverse;
       }
     </style>
-    <script>
-      // for box-2
-      window.onload = () => {
-        setTimeout(() => {
-          let innerClass1 = document
-            .querySelector('.inner-1')
-            .getAttribute('class');
-          let innerClass2 = document
-            .querySelector('.inner-2')
-            .getAttribute('class');
-          innerClass1 += ' extend';
-          innerClass2 += ' extend';
-          document.querySelector('.inner-1').setAttribute('class', innerClass1);
-          document.querySelector('.inner-2').setAttribute('class', innerClass2);
-        }, 2000);
-      };
-      // for box-5
-      function operation(mode) {
-        const nodeList = document.querySelectorAll(
-          '.box-5 .list li .animation'
-        );
-        nodeList.forEach((node) => {
-          node.style.animationPlayState = mode;
-        });
-      }
-    </script>
+    <script src="main.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="box" style="display: none"></div>
-      <div class="box-2" style="display: none">
+      <div class="box-2">
         <div class="inner-1"></div>
         <div class="inner-2"></div>
       </div>
@@ -238,7 +215,7 @@
           </li>
         </ul>
       </div>
-      <div class="box-5">
+      <div class="box-5" style="display: none">
         <ul class="list">
           <li>
             <span>normal</span>
