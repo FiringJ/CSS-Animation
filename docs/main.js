@@ -3,10 +3,12 @@ import playground from './modules/playground.js';
 import startAnimations from './modules/startAnimations.js';
 import toggleOnClick from './modules/toggle.js';
 import darkModeControl from './modules/darkMode.js';
+import operateAnimation from './modules/operateAnimation.js';
 
 buildDocsIndex();
 playground();
 darkModeControl();
+operateAnimation();
 
 toggleOnClick('.callout-showList', 'html', 'animationList-active');
 toggleOnClick('.callout-hideList', 'html', 'animationList-active');
