@@ -1,0 +1,28 @@
+.inner-1 {
+  height: 8px;
+  transition: all 1s ease;
+  border-radius: 0 0 8px 8px;
+}
+.inner-2 {
+  height: 56px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-48px);
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(
+    132deg,
+    #ffceee 0%,
+    #ffe8c9 51%,
+    #f9ffac 80%,
+    #baffd5 100%
+  );
+  transition: all 1s ease;
+}
+.inner-1.extend {
+  height: 56px;
+}
+.inner-2.extend {
+  transform: translateY(0);
+}
